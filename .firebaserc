@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "drinkshop-18118": {
+      "hosting": {
+        "drink_shop": [
+          "drinkshop-18118"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "drinkshop-18118"
+  }
+}
