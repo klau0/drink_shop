@@ -7,4 +7,20 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - src\app\app.component.ts
 - 
 
-# 
+# Material elemek:
+
+- sidenav
+- toolbar
+- button
+- progress spinner
+- list
+- form field
+- input
+- icon
+- card
+- 
+
+# Direktívák:
+
+- ngIf
+- 
