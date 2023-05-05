@@ -23,7 +23,7 @@ export class LoginComponent {
     console.log(this.email.value);
 
     this.authService.login(this.email.value!, this.password.value!).then(cred => {
-      //this.router.navigateByUrl('/main');
+      this.router.navigateByUrl('/main');
       this.loading = false;
     }).catch(error => {
       console.error(error);

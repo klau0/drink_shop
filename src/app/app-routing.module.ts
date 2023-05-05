@@ -4,10 +4,29 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-   path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) 
+   path: 'login',
+   loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) 
   }, 
   { 
-    path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule) 
+    path: 'signup', 
+    loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupModule) 
+  },
+  {
+    path: 'main', 
+    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule) 
+  },
+  {
+    path: 'profile', 
+    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule) 
+  },
+  {
+    path: 'cart', 
+    loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartModule) 
+  },
+  {
+    path: '',
+    redirectTo: '/main',
+    pathMatch: 'full'
   }
 ];
 
