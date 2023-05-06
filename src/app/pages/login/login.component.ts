@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent {
 
   loading: boolean = false;
 
-  constructor(private router: Router, private authService: AuthService){}
+  constructor(private router: Router, private authService: AuthService, private snackBar: MatSnackBar){}
 
   async login() {
     this.loading = true;
@@ -26,8 +27,8 @@ export class LoginComponent {
       this.router.navigateByUrl('/main');
       this.loading = false;
     }).catch(error => {
-      console.error(error);
       this.loading = false;
+      this.snackBar.open(error, '', { duration: 3000 });
     });
   }
 

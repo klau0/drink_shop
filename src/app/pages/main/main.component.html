@@ -1,1 +1,16 @@
-<p>main works!</p>
+<div fxLayoutGap="20px" fxLayout.xs="column" fxLayout="row wrap" class="container">
+    <mat-card class="card" *ngFor="let d of drinks" >
+        <mat-card-header>
+            <mat-card-title>{{d.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="urls[d.id]" alt="img">
+        <mat-card-content >
+                <p>{{d.liter}} L</p>
+                <p>{{d.price}} Ft</p>
+        </mat-card-content>
+        <mat-card-actions class="center">
+                <span><input matInput type="number" [formControl]="qty"></span>
+                <span><button mat-raised-button color="primary" (click)="to_cart(d)">Kosárba</button></span>
+        </mat-card-actions>
+    </mat-card>
+</div>

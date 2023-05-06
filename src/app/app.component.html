@@ -11,7 +11,7 @@
             <mat-icon>menu</mat-icon>
           </button>
         </div>
-        <div>Italdiszkont</div>
+        <div>Jankir</div>
         <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
           <ul fxLayout fxLayoutGap="10px" class="navigation-items">
             <li><a routerLink="/main">Főoldal</a></li>
@@ -20,7 +20,6 @@
             <li *ngIf="loggedInUser"><a routerLink="/profile">Profil</a></li>
             <li *ngIf="loggedInUser"><a routerLink="/login" (click)="logout()">Kijelentkezés</a></li>
             <li><a routerLink="/signup">Regisztráció</a></li>
-            <!-- kell ide ngIf ha van authGuard? -->
           </ul>
         </div>
       </mat-toolbar>
