@@ -19,6 +19,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - icon
 - card
 - snackbar
+- checkbox
 
 # Direktívák:
 
