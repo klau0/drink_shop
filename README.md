@@ -18,7 +18,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - input
 - icon
 - card
-- 
+- snackbar
 
 # Direktívák:
 
