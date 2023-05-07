@@ -6,7 +6,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ThemePalette } from '@angular/material/core';
 import { User } from '../../shared/models/User';
+import { Cart } from '../../shared/models/Cart';
 import { UserService } from '../../shared/services/user.service';
+import { CartService } from 'src/app/shared/services/cart.service';
 
 @Component({
   selector: 'app-signup',
@@ -27,6 +29,7 @@ export class SignupComponent {
   constructor(
     private location: Location,
     private authService: AuthService,
+    private cartService: CartService,
     private snackBar: MatSnackBar, 
     private router: Router,
     private userService: UserService){}
@@ -34,7 +37,6 @@ export class SignupComponent {
   onSubmit() {
     if (this.valid_pswd_confirm() && this.checked){
       this.authService.signup(this.signUpForm.get('email')?.value!, this.signUpForm.get('pswd')?.value!).then(cred => {
-        console.log(cred.user?.uid);
 
         const user: User = {
           id: cred.user?.uid as string,
@@ -42,16 +44,29 @@ export class SignupComponent {
           email: this.signUpForm.get('email')?.value!
         };
 
+        // user adatbázisba írása
         this.userService.create(user).then(_ => {
           this.snackBar.open('Sikeres regisztráció!', '', { duration: 3000 });
         }).catch(error => {
-          console.error(error);
           this.snackBar.open(error, '', { duration: 3000 });
         })
 
-        this.router.navigateByUrl('/main');
+        const cart: Cart = {
+          id: user.id,
+          drinks: "",
+          carted_count: 0
+        };
+
+        // userhez cart léterhozása adatBben
+        this.cartService.create(cart).then(_ => {
+          console.log('Cart hozzáadva!');
+        }).catch(error => {
+          this.snackBar.open(error, '', { duration: 3000 });
+        });
+
+        this.router.navigateByUrl('/main')
+
       }).catch(error => {
-        console.error(error);
         this.snackBar.open(error, '', { duration: 3000 });
       });
     }

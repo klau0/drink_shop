@@ -8,12 +8,16 @@ export class AuthService {
 
   constructor(private auth: AngularFireAuth) { }
 
-  login(email: string, password: string) {
-    return this.auth.signInWithEmailAndPassword(email, password);
+  async login(email: string, password: string) {
+    const x = await this.auth.signInWithEmailAndPassword(email, password);
+    localStorage.setItem('user', JSON.stringify(x));
+    return x;
   }
 
-  signup(email: string, password: string) {
-    return this.auth.createUserWithEmailAndPassword(email, password);
+  async signup(email: string, password: string) {
+    const x = await this.auth.createUserWithEmailAndPassword(email, password);
+    localStorage.setItem('user', JSON.stringify(x));
+    return x;
   }
 
   isUserLoggedIn() {
@@ -21,6 +25,7 @@ export class AuthService {
   }
 
   logout() {
+    localStorage.removeItem("user");
     return this.auth.signOut();
   }
 }

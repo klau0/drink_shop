@@ -11,10 +11,12 @@ div {
     align-items: center;
 }
 
-span {
-    padding: 5px 5px 5px 5px;
-}
-
 mat-form-field {
     width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+    mat-form-field {
+        width: 80%;
+    }
 }

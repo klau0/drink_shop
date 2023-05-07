@@ -21,15 +21,14 @@ export class LoginComponent {
   async login() {
     this.loading = true;
 
-    console.log(this.email.value);
-
-    this.authService.login(this.email.value!, this.password.value!).then(cred => {
+    try {
+      const x = await this.authService.login(this.email.value!, this.password.value!);
       this.router.navigateByUrl('/main');
       this.loading = false;
-    }).catch(error => {
+    } catch (e){
       this.loading = false;
-      this.snackBar.open(error, '', { duration: 3000 });
-    });
+      if (e instanceof Error) this.snackBar.open(e.message, '', { duration: 3000 });
+    }
   }
 
 }

@@ -1,1 +1,25 @@
-<p>cart works!</p>
+<mat-accordion multi *ngFor="let d of cartedDrinks">
+  <mat-expansion-panel *ngIf="d[0] !== undefined && d[1] !== undefined">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ d[0].name }}
+      </mat-panel-title>
+      <mat-panel-description>
+        Összeg: {{ (+d[0].price) * (+d[1]) }} Ft
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="content">
+      <button mat-icon-button color="warn" (click)="valtozik(d[0], 1)">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+      <span>{{ +d[1] }}</span>
+      <button mat-icon-button color="warn" (click)="valtozik(d[0], -1)">
+        <mat-icon>remove_circle</mat-icon>
+      </button>
+    </div>
+    <button id="d" mat-raised-button color="warn" (click)="valtozik(d[0], 0)">Kivesz</button>
+  </mat-expansion-panel>
+</mat-accordion>
+<div class="extend">
+  <div><span>Összesen: <strong>{{kosar.carted_count}}</strong> Ft</span></div>
+</div>

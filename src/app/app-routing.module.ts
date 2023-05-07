@@ -13,11 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'main', 
-    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule) 
-  },
-  {
-    path: 'profile', 
-    loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule),
+    loadChildren: () => import('./pages/main/main.module').then(m => m.MainModule),
     canActivate: [AuthGuard]
   },
   {
@@ -27,8 +23,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/main',
+    redirectTo: '/login',
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: '/login'
   }
 ];
 

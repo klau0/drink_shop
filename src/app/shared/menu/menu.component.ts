@@ -18,4 +18,10 @@ export class MenuComponent {
       this.onLogout.emit(logout);
     }
   }
+
+  selected(s: string): boolean {
+    if (this.currentPage.includes(s)){
+      return true;
+    } return false;
+  }
 }

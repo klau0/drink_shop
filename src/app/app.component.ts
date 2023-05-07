@@ -28,12 +28,11 @@ export class AppComponent implements OnInit {
     });
 
     this.authService.isUserLoggedIn().subscribe(user => {
-      //console.log(user);
-      this.loggedInUser = user;
-      localStorage.setItem('user', JSON.stringify(this.loggedInUser));
-    }, error => {
-      console.error(error);
-      localStorage.setItem('user', JSON.stringify('null'));
+        this.loggedInUser = user;
+        localStorage.setItem('user', JSON.stringify(this.loggedInUser));
+      }, error => {
+        console.error(error);
+        localStorage.setItem('user', JSON.stringify('null'));
     });
   }
 
@@ -54,6 +53,7 @@ export class AppComponent implements OnInit {
   logout(_?: boolean) {
     this.authService.logout().then(() => {
       console.log('Logged out successfully.');
+
     }).catch(error => {
       console.error(error);
     });

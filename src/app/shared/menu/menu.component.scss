@@ -3,6 +3,17 @@ a {
     color: white;
 }
 
-a:hover, a:active {
+a:hover {
     color: lightgray;
+}
+
+.selected {
+    background-color: crimson;
+}
+
+span {
+    display: inline-block;
+    width: fit-content;
+    padding-left: 10px;
+    padding-bottom: 5px;
 }
